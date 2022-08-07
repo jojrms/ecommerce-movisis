@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700&family=Poppins:wght@200;300;400;500&display=swap');
+
+$corAzulada : #f5f7f9;
+
+.App{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: grid;
+    grid-template-rows: 15vh auto;
+}
+body{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    font-family: Poppins;
+}
+body *{
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    background-color: transparent;
+    font-family: Poppins;
+}
+button, input, li{
+    cursor: pointer;
+}
+ul{
+    display: flex;
+    list-style: none;
+}
+
+header{
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    padding: 0vh 5vw;
+    border-bottom: 1px solid $corAzulada;
+
+    div{
+        width: 40%;
+        display: flex;
+        background-color: $corAzulada;
+        border-radius: .5vw;
+        padding: 1.5vh 1vw 1.5vh 1vw;
+        margin: auto 0vw auto auto;
+        align-items: center;
+
+        img{
+            width: 1.5vw;
+            height: 1.5vw;
+            opacity: .5;
+        }
+        input{
+            width: -webkit-fill-available;
+            margin-left: 1vw;
+        }
+    }
+    ul{
+        margin: auto;
+        grid-gap: 2vw;
+        li:hover{
+            color: rgb(77, 160, 255);
+        }
+    }
+    button{
+        width: 2vw;
+        height: 2vw; 
+        background-size: contain;
+    }
+    #btnFavorite{
+        margin: auto 1.5vw;
+        background-image: url('https://img.icons8.com/fluency-systems-regular/96/000000/like--v1.png');
+    }
+    #btnShop{
+        background-image: url('https://img.icons8.com/fluency-systems-regular/96/000000/shopping-cart.png');
+    }
+}
+
+section{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 25% auto;
+
+    .asideFilters{
+        height: 100%;
+        border-right: 1px solid $corAzulada;
+    }
+    .asideExbProducts{
+        background-color: $corAzulada;
+    }
+}
