@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Viewer from "./Viewer";
 
 const LandingPage = () => {
 
@@ -13,17 +14,21 @@ const LandingPage = () => {
                 const data = await response.json()
                 const results = data.results
 
-                results.forEach( (product: any) => {               
+                results.forEach( (product: any) => {    
+                    console.log(product)           
                     setDataProduct((currentList: any) => [...currentList, product])
-                    console.log(dataProduct);
+                    
                 })
 
-                // return console.log('Dados da API recebidos com sucesso!');
+                if(response.ok){
+                    return console.log('Dados da API recebidos com sucesso!');
+                }
+
                 
                 
             })
             .catch(function(error){
-                return console.log('Falha no recebimento dos dados da API. Erro ' + error.message);
+                return console.log('Falha no recebimento dos dados da API. Erro: ' + error.message);
                 
             })
         
@@ -51,7 +56,23 @@ const LandingPage = () => {
             <section>
                 <aside className="asideFilters">
                 </aside>
-                <aside className="asideExbProducts"></aside>
+                <aside className="asideExbProducts">
+                    {dataProduct.map((product: any) => {
+                        return(
+                            <Viewer
+                                title={product.title} 
+                                url={product.thumbnail} 
+                                attribute={
+                                    <ul>
+                                        <li>{product.attributes[4].name}: {product.attributes[4].value_name} </li>
+                                        <li>{product.attributes[1].name}: {product.attributes[1].value_name} </li>    
+                                    </ul>
+                                }
+                                price={product.price}  
+                            />
+                        )
+                    })}
+                </aside>
             </section>
         </>
     )

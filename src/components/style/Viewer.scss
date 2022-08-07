@@ -1,0 +1,60 @@
+$corTexto: #273146;
+
+.divExbProduct{
+    width: 85%;
+    min-height: 10vw;
+    background-color: white;
+    border-radius: 1vw;
+    display: grid;
+    padding: 1.5vw;
+
+    #favorite{
+        width: 2vw;
+        background-image: url('https://img.icons8.com/fluency-systems-regular/96/000000/like--v1.png');
+        background-size: contain;
+        margin-left: auto;
+        margin-bottom: -2vw;
+        cursor: pointer;
+        opacity: .8;
+    }
+    #favorite:hover{
+        background-image: url('https://img.icons8.com/fluency-systems-filled/48/1A1A1A/like.png');
+        background-size: contain;
+    }
+    #spanImage{
+        width: 100%;
+        height: 10vw;
+        background-size: contain;
+    }
+    h2{
+        font-size: 1.2vw;
+        font-weight: bold;
+        line-height: 110%;
+        margin: 2vw 0vw 0vw 0vw;
+        color: $corTexto
+    }
+    ul{
+        font-size: .9vw;
+        display: grid;
+        grid-gap: .3vw;
+        color: $corTexto
+    }
+    h3{
+        color: $corTexto;
+        font-weight: 500;
+        letter-spacing: .3px;
+        font-size: 2vw;
+        margin: 1vw 0vw 0vw 0vw;
+    }
+    button{
+        width: 3vw;
+        height: 3vw;
+        margin-top: -3vw;
+        margin-left: auto;
+        cursor: pointer;
+        background-color: #f03080;
+        border-radius: 1vw;
+        background-image: url('https://img.icons8.com/fluency-systems-regular/96/FFFFFF/shopping-basket.png');
+        background-size: 50%;
+    }
+}

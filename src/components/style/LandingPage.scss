@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700&family=Poppins:wght@200;300;400;500&display=swap');
 
 $corAzulada : #f5f7f9;
+$corTexto: #273146;
 
 .App{
     width: 100%;
@@ -30,14 +31,19 @@ button, input, li{
 ul{
     display: flex;
     list-style: none;
+    padding: 0;
 }
 
 header{
+    width: -webkit-fill-available;
     height: 15vh;
     display: flex;
     align-items: center;
     padding: 0vh 5vw;
     border-bottom: 1px solid $corAzulada;
+    position: fixed;
+    background-color: white;
+    z-index: 10;
 
     div{
         width: 40%;
@@ -83,6 +89,7 @@ section{
     width: 100%;
     display: grid;
     grid-template-columns: 25% auto;
+    margin-top: 15vh;
 
     .asideFilters{
         height: 100%;
@@ -90,5 +97,9 @@ section{
     }
     .asideExbProducts{
         background-color: $corAzulada;
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        grid-gap: 2vw;
+        padding: 3vw;
     }
 }
