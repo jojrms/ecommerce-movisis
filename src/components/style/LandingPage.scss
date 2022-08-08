@@ -85,21 +85,85 @@ header{
     }
 }
 
-section{
+.sectionAbsolute{
     width: 100%;
+    height: fit-content;
     display: grid;
-    grid-template-columns: 25% auto;
     margin-top: 15vh;
+    background-color: $corAzulada;
 
     .asideFilters{
+        width: 20%;
         height: 100%;
         border-right: 1px solid $corAzulada;
+        padding: 2vw;
+        position: fixed;
+        background-color: white;
+
+        h3{
+            font-size: 1.8vw;
+            font-weight: 500;
+            margin: 0;
+        }
+        span{
+            display: block;
+            h4{
+                margin: 0vw 0vw 1vw 0vw;
+            }
+        }
+
+        span:nth-of-type(1){
+            margin: 2vw 0vw 2vw 0vw;
+
+            h4{
+                font-size: 1.3vw;
+                font-weight: 500;
+            }
+            div{
+                width: 100%;
+                display: grid;
+                grid-template-columns: 40% 20% 40%;
+
+                input{
+                    width: 90%;
+                    height: 2vw;
+                    border: 1px solid #ececec;
+                    border-radius: 1vw;
+                    padding: .5vw;
+                    text-align: center;
+                    margin: auto auto auto 0vw;
+                }
+                span{
+                    width: 40%;
+                    height: 2px;
+                    background-color: #ececec;
+                    margin: auto;
+                }
+            }
+        }
+        span:nth-of-type(2){
+            h4{
+                font-size: 1.3vw;
+                font-weight: 500;
+            }
+            p{
+                font-size: .9vw;
+            }
+            select{
+                width: 100%;
+                height: 3vw;
+                border: 1px solid #ececec;
+                border-radius: .5vw;
+                padding: .5vw;
+            }
+        }
     }
     .asideExbProducts{
-        background-color: $corAzulada;
         display: grid;
         grid-template-columns: repeat(3, auto);
         grid-gap: 2vw;
         padding: 3vw;
+        margin-left: 24%;
+        background-color: transparent;
     }
 }

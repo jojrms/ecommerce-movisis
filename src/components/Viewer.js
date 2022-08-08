@@ -1,4 +1,4 @@
-const Viewer = ({title, url, attribute, price}) => {
+const Viewer = ({title, url, attribute, price, functionSetProduct}) => {
 
     return(
         <div className="divExbProduct">
@@ -7,7 +7,7 @@ const Viewer = ({title, url, attribute, price}) => {
             <h2>{title}</h2>
             {attribute}
             <h3><small>R$</small>{price}</h3>
-            <button id="btnAddBag"/>
+            {functionSetProduct}
         </div>
     )
 }
