@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
+/* eslint-disable jsx-a11y/alt-text */
 import { useEffect, useState } from "react";
-import Viewer from "./Viewer";
+import Viewer, { MenuBag } from "./Viewer";
 
 const LandingPage = () => {
 
@@ -14,11 +16,11 @@ const LandingPage = () => {
         await fetch(url)
             .then(async function(response){
                 const data = await response.json()
-                const results = data.results
+                const results = await data.results
 
-                results.forEach( (product: any) => {    
-                    console.log(product)           
-                    setDataProduct((currentList: any) => [...currentList, product])
+                await results.forEach( (product: any) => {    
+                    // console.log(product)           
+                    setDataProduct((currentList : any) => [...currentList, product])
                     
                 })
 
@@ -37,21 +39,52 @@ const LandingPage = () => {
     }
 
 
-    //------------- FUNÇÃO PARA GUARDAR O PRODUTO NO CARRINHO -------------
-    const [product, setProduct] = useState({
-        name: '',
-        value: '',
-        qtd: 0,
-    })
 
-    const addProduct = async (info: []) => {
-        console.log(info);
+    //---------------- FUNÇÃO PARA BUSCAR PRODUTO PELO SEARCH ---------------
+    const [productToSearch, setProductToSearch] = useState({
+        productName: '',
+    })
+    const [productSearched, setProductSearched] = useState([] as any)
+
+    
+    const searchProduct = async() => {
+
+        console.log(productToSearch.productName);
         
+
+       const url = `https://api.mercadolibre.com/sites/MLA/search?q=${productToSearch.productName}`
+       fetch(url)
+        .then(async function(response){
+
+            const data = await response.json()
+            const results = await data.results
+
+            // CRIAÇÃO/REMOÇÃO DE ELEMENTOS HTML
+            document.getElementById('asideExbProducts')?.remove()
+            const aside = document.createElement('aside')
+            aside.id = 'asideExbProducts'
+            document.getElementById('sectionAbsolute')?.appendChild(aside)
+
+
+            await results.forEach( (product: any) => {    
+                setProductSearched((currentList : any) => [...currentList, product])
+
+                return Viewer
+            })
+
+
+            if(response.ok){
+                return console.log('Dados da API recebidos com sucesso!');
+            }
+        })
+         
     }
+
 
     useEffect(() => {
         getProduct();
     }, [])
+
 
 
     //----------------- INICIO DA ESTRUTURA HTML -------------------
@@ -59,8 +92,10 @@ const LandingPage = () => {
         <>
             <header>
                 <div>
-                    <img src="https://img.icons8.com/ios-glyphs/480/000000/search--v1.png"/>
-                    <input type={'search'} placeholder={'Search product'}/>                
+                    <img onClick={searchProduct} src="https://img.icons8.com/ios-glyphs/480/000000/search--v1.png"/>
+                    <input type={'search'} placeholder={'Search product'} 
+                    onChange={(event) => setProductToSearch({...productToSearch, productName: event.target.value})}
+                    />                
                 </div>
                 <ul>
                     <li>Store</li>
@@ -68,9 +103,21 @@ const LandingPage = () => {
                     <li>Help</li>
                 </ul>
                 <button id="btnFavorite"/>
-                <button id="btnShop"/>
+                <button id="btnShop" value={0}>
+                    <img src="https://img.icons8.com/fluency-systems-regular/96/000000/shopping-cart.png"/>
+                    <input id="pQtdProducts"/>
+                </button>
             </header>
-            <section className="sectionAbsolute">
+            <section className="sectionAbsolute" id="sectionAbsolute">
+
+                <aside className="asideBagExb" id="asideBagExb">
+                    <span className="spanBackground">
+                        <h3>Carrinho</h3>
+                        <div>   
+                        </div>
+                    </span>
+                </aside>
+
                 <aside className="asideFilters">
                     <h3>Filtros</h3>
                     <span>
@@ -98,21 +145,27 @@ const LandingPage = () => {
                             </select>
                         </div>
                     </span>
+
+                    <input id="inputSubmitFilter" type={'submit'} value='Filtrar Produtos'/>
                 </aside>
-                <aside className="asideExbProducts">
+                <aside className="asideExbProducts" id="asideExbProducts">
                     {dataProduct.map((product: any) => {
                         return(
                             <Viewer
                                 title={product.title}
                                 url={product.thumbnail}
-                                attribute={<ul>
-                                    <li>{product.attributes[4].name}: {product.attributes[4].value_name} </li>
-                                    <li>{product.attributes[1].name}: {product.attributes[1].value_name} </li>
-                                </ul>}
+                                attribute={
+                                    <ul>
+                                        <li>{product.attributes[4].name}: {product.attributes[4].value_name} </li>
+                                        <li>{product.attributes[1].name}: {product.attributes[1].value_name} </li>
+                                    </ul>
+                                }
                                 price={product.price} 
                                 functionSetProduct={
                                     <button id="btnAddBag"/>
                                 }
+                                available_quantity={product.available_quantity}
+                                key={product.catalog_id}
                             />
                         )
                     })}

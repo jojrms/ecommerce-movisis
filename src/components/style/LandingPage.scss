@@ -72,16 +72,33 @@ header{
         }
     }
     button{
-        width: 2vw;
-        height: 2vw; 
-        background-size: contain;
+        width: 1.5vw;
+        height: 1.5vw; 
+        background-size: contain;        
     }
     #btnFavorite{
         margin: auto 1.5vw;
         background-image: url('https://img.icons8.com/fluency-systems-regular/96/000000/like--v1.png');
     }
     #btnShop{
-        background-image: url('https://img.icons8.com/fluency-systems-regular/96/000000/shopping-cart.png');
+        width: fit-content;
+        padding: 1.2vw 1vw;
+        display: flex;
+        align-items: center;
+        background-color: #f03080;
+        border-radius: .8vw;
+
+        img{
+            width: 1.5vw;
+            filter: invert(1);
+        }
+        input{
+            width: 2vw;
+            font-size: 1vw;
+            margin-left: auto;
+            color: white;
+            text-align: center;
+        }
     }
 }
 
@@ -92,6 +109,46 @@ header{
     margin-top: 15vh;
     background-color: $corAzulada;
 
+
+    .asideBagExb{
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.342);
+        position: fixed;
+        z-index: 10;
+        margin-top: -15vh;
+        display: none;
+
+        .spanBackground{
+            width: 33vw;
+            height: 33vw;
+            background-color: white;
+            display: grid;
+            grid-template-rows: 5vw auto 8vw;
+            border-radius: 1vw;
+            margin: auto;
+            padding: 2vw;
+
+            h3{
+                font-size: 1.7vw;
+                font-weight: 500;
+                margin: 1.5vw 0vw 2vw 1.5vw;
+            }
+            div{
+                width: 100%;
+                background-color: green;
+                span{
+                    width: 100%;
+                    height: 2vw;
+                    background-color: red;
+                    display: flex;
+                }    
+            }
+            
+        }
+    }
+
+
     .asideFilters{
         width: 20%;
         height: 100%;
@@ -101,14 +158,14 @@ header{
         background-color: white;
 
         h3{
-            font-size: 1.8vw;
+            font-size: 1.5vw;
             font-weight: 500;
             margin: 0;
         }
         span{
             display: block;
             h4{
-                margin: 0vw 0vw 1vw 0vw;
+                margin: 0vw 0vw .5vw 0vw;
             }
         }
 
@@ -116,7 +173,7 @@ header{
             margin: 2vw 0vw 2vw 0vw;
 
             h4{
-                font-size: 1.3vw;
+                font-size: 1vw;
                 font-weight: 500;
             }
             div{
@@ -126,9 +183,9 @@ header{
 
                 input{
                     width: 90%;
-                    height: 2vw;
+                    height: 1.5vw;
                     border: 1px solid #ececec;
-                    border-radius: 1vw;
+                    border-radius: .8vw;
                     padding: .5vw;
                     text-align: center;
                     margin: auto auto auto 0vw;
@@ -157,10 +214,21 @@ header{
                 padding: .5vw;
             }
         }
+
+        #inputSubmitFilter{
+            width: 100%;
+            height: fit-content;
+            padding: 1vw;
+            margin-top: 2vw;
+            border-radius: .5vw;
+            font-weight: 500;
+            letter-spacing: .5px;
+            font-size: .8vw;
+        }
     }
     .asideExbProducts{
         display: grid;
-        grid-template-columns: repeat(3, auto);
+        grid-template-columns: repeat(4, auto);
         grid-gap: 2vw;
         padding: 3vw;
         margin-left: 24%;

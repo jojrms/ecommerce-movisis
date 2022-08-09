@@ -9,7 +9,7 @@ $corTexto: #273146;
     padding: 1.5vw;
 
     #favorite{
-        width: 2vw;
+        width: 1.5vw;
         background-image: url('https://img.icons8.com/fluency-systems-regular/96/000000/like--v1.png');
         background-size: contain;
         margin-left: auto;
@@ -27,34 +27,44 @@ $corTexto: #273146;
         background-size: contain;
     }
     h2{
-        font-size: 1.2vw;
+        font-size: 1vw;
         font-weight: bold;
         line-height: 110%;
         margin: 2vw 0vw 0vw 0vw;
         color: $corTexto
     }
     ul{
-        font-size: .9vw;
+        font-size: .7vw;
         display: grid;
-        grid-gap: .3vw;
         color: $corTexto
     }
-    h3{
-        color: $corTexto;
-        font-weight: 500;
-        letter-spacing: .3px;
-        font-size: 2vw;
-        margin: 1vw 0vw 0vw 0vw;
+    .divInfoValues{
+        display: flex;
+        h3{
+            color: $corTexto;
+            font-weight: 500;
+            letter-spacing: .3px;
+            font-size: 1.5vw;
+            margin: 1vw 0vw 0vw 0vw;
+        }
+        button{
+            width: 2.5vw;
+            height: 2.5vw;
+            margin-top: 1vw;
+            margin-left: auto;
+            cursor: pointer;
+            background-color: #f03080;
+            border-radius: .7vw;
+            background-image: url('https://img.icons8.com/fluency-systems-regular/96/FFFFFF/shopping-basket.png');
+            background-size: 50%;
+        }
+        .pAvailable{
+            margin: 0;
+            font-size: .7vw;
+            color: #ccd3e4;
+            margin-top: 3vw;
+            position: absolute;
+        }    
     }
-    button{
-        width: 3vw;
-        height: 3vw;
-        margin-top: -3vw;
-        margin-left: auto;
-        cursor: pointer;
-        background-color: #f03080;
-        border-radius: 1vw;
-        background-image: url('https://img.icons8.com/fluency-systems-regular/96/FFFFFF/shopping-basket.png');
-        background-size: 50%;
-    }
+    
 }
