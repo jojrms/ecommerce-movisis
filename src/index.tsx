@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 
 import './components/style/LandingPage.scss'
 import './components/style/Viewer.scss'
+import './components/style/MobileMeasurement.scss'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

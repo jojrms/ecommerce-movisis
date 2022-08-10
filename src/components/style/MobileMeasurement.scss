@@ -40,6 +40,47 @@
         }
     }
 
+
+
+    .divExbBag{
+
+        .spanBackground{
+            width: 30vh;
+            height: 35vh;
+            margin: 12vh -70vw;
+            grid-template-rows: min-content auto 6vh;
+
+
+            h3{
+                font-size: 2vh;
+                margin: 1vh;
+            }
+            div{
+                span{
+                    grid-template-columns: auto auto 8vh;
+
+                    img{
+                        width: 2.5vh;
+                        margin-right: 1vw;
+                    }
+                    h3{
+                        font-size: 1.5vh;
+                    }
+                    p{
+                        font-size: 1.5vh;
+                        margin-right: 1vw;
+                    }
+                }
+            }
+
+            input{
+                height: 5vh;
+            }
+        }
+    }
+
+
+
     .sectionAbsolute{
 
         .asideFilters{

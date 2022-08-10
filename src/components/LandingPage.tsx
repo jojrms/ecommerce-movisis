@@ -114,19 +114,20 @@ const LandingPage = () => {
         const productSelected = [{
             title: title, 
             price: price, 
-            qtd: qtd
+            qtd: qtd,
         }]
 
-        productSelected.forEach( (product: any) => {
+        productSelected.map( (product: any, index) => {
             setProductsBag((currentList: any) => [...currentList, product])
         })
+
+        
 
         bag.qtd++
 
         console.log(productsBag);
         
     }
-
 
     useEffect(() => {
         getProduct();
@@ -150,7 +151,7 @@ const LandingPage = () => {
                     <li>Help</li>
                 </ul>
                 <button id="btnFavorite"/>
-                <button id="btnShop" value={0}>
+                <button id="btnShop" className='exibList'>
                     <img src="https://img.icons8.com/fluency-systems-regular/96/000000/shopping-cart.png"/>
                     <input id="pQtdProducts" value={bag.qtd}/>
                 </button>
@@ -172,7 +173,7 @@ const LandingPage = () => {
                             )
                         })}
                     </div>
-                    <input type={'submit'} value='Próximo: Verificação'/>
+                    <input type={'submit'} value='Próxima Etapa: Verificação'/>
                 </span>    
             </div>
             
@@ -223,7 +224,7 @@ const LandingPage = () => {
                                 }
                                 price={product.price} 
                                 functionSetProduct={
-                                    <button id="btnAddBag" onClick={() => setBagProduct(product.title, product.price, 1)}/>
+                                    <button id="btnAddBag" onClick={() => setBagProduct(product.title, product.price, 1)}>Add ao Carrinho</button>
                                 }
                                 available_quantity={product.available_quantity}
                                 key={product.catalog_id}
