@@ -8,7 +8,7 @@ $corTexto: #273146;
     height: 100%;
     position: absolute;
     display: grid;
-    grid-template-rows: 15vh auto;
+    grid-template-rows: 13vh auto;
 }
 body{
     width: 100%;
@@ -36,7 +36,7 @@ ul{
 
 header{
     width: -webkit-fill-available;
-    height: 15vh;
+    height: 13vh;
     display: flex;
     align-items: center;
     padding: 0vh 5vw;
@@ -67,6 +67,7 @@ header{
     ul{
         margin: auto;
         grid-gap: 2vw;
+        font-size: .8vw;
         li:hover{
             color: rgb(77, 160, 255);
         }
@@ -121,7 +122,7 @@ header{
         padding: 1.5vw;
         box-shadow: -10px 20px 20px rgba(0, 0, 0, 0.089);
         z-index: 5;
-        margin: 15vh -23vw;
+        margin: 12vh -23vw;
         position: fixed;
     
         h3{
