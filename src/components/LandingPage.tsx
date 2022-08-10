@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable jsx-a11y/alt-text */
+import { title } from "process";
 import { useEffect, useState } from "react";
 import Viewer, { MenuBag } from "./Viewer";
 
@@ -40,7 +41,7 @@ const LandingPage = () => {
 
 
 
-    //---------------- FUNÇÃO PARA BUSCAR PRODUTO PELO SEARCH ---------------
+    //---------------- FUNÇÃO PARA BUSCAR PRODUTO PELO NOME ---------------
     const [productToSearch, setProductToSearch] = useState({
         productName: '',
     })
@@ -62,14 +63,34 @@ const LandingPage = () => {
             // CRIAÇÃO/REMOÇÃO DE ELEMENTOS HTML
             document.getElementById('asideExbProducts')?.remove()
             const aside = document.createElement('aside')
-            aside.id = 'asideExbProducts'
+            aside.className = 'asideExbProducts'
             document.getElementById('sectionAbsolute')?.appendChild(aside)
 
 
+            // FOREACH NOS PRODUTOS PARA RECEBER SEUS OBJETOS
             await results.forEach( (product: any) => {    
                 setProductSearched((currentList : any) => [...currentList, product])
+                
+                // CRIAÇÃO DOS ELEMENTOS HTML PARA EXIBIR OS PRODUTOS
+                const divExbProduct = document.createElement('div')
+                divExbProduct.className = 'divExbProduct'
+                
+                const spanImage = document.createElement('span')
+                spanImage.id = 'spanImage'
+                spanImage.style.backgroundImage = `url(${product.thumbnail})`
+                const h2 = document.createElement('h2')
+                h2.textContent = product.title
+                const price = document.createElement('div')
+                price.className = 'divInfoValues'
+                const h3 = document.createElement('h3')
+                h3.textContent = `R$ ${product.price}`
+                price.appendChild(h3)
 
-                return Viewer
+                aside.appendChild(divExbProduct).append(spanImage,h2, price)
+
+                console.log(product);
+                
+                
             })
 
 
@@ -78,6 +99,19 @@ const LandingPage = () => {
             }
         })
          
+    }
+
+
+
+    //---------------- FUNÇÃO PARA ENCHER O CARRINHO ---------------
+    const [bag, setBag] = useState([] as any)
+    const [product, setProduct] = useState([] as any)
+
+    const setBagProduct = async(title: string, price: number) => {
+
+        const product = [{title: title, price: price}]
+        console.log(product);
+        
     }
 
 
@@ -162,7 +196,7 @@ const LandingPage = () => {
                                 }
                                 price={product.price} 
                                 functionSetProduct={
-                                    <button id="btnAddBag"/>
+                                    <button id="btnAddBag" onClick={setBagProduct => (product.title, product.price)}/>
                                 }
                                 available_quantity={product.available_quantity}
                                 key={product.catalog_id}
