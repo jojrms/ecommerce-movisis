@@ -104,13 +104,21 @@ const LandingPage = () => {
 
 
     //---------------- FUNÇÃO PARA ENCHER O CARRINHO ---------------
-    const [bag, setBag] = useState([] as any)
     const [product, setProduct] = useState([] as any)
+    const [bag, setBag] = useState({
+        qtd: 0
+    })
 
-    const setBagProduct = async(title: string, price: number) => {
+    const setBagProduct = async(title: string, price: number, qtd: number) => {
 
-        const product = [{title: title, price: price}]
-        console.log(product);
+        const productS = [{title: title, price: price, qtd: qtd}]
+
+        productS.forEach( (product: any) => {
+            setProduct((currentList: any) => [...currentList, productS])
+        })
+
+        bag.qtd++
+        console.log(bag);
         
     }
 
@@ -139,7 +147,7 @@ const LandingPage = () => {
                 <button id="btnFavorite"/>
                 <button id="btnShop" value={0}>
                     <img src="https://img.icons8.com/fluency-systems-regular/96/000000/shopping-cart.png"/>
-                    <input id="pQtdProducts"/>
+                    <input id="pQtdProducts" value={bag.qtd}/>
                 </button>
             </header>
             <section className="sectionAbsolute" id="sectionAbsolute">
@@ -196,7 +204,7 @@ const LandingPage = () => {
                                 }
                                 price={product.price} 
                                 functionSetProduct={
-                                    <button id="btnAddBag" onClick={setBagProduct => (product.title, product.price)}/>
+                                    <button id="btnAddBag" onClick={() => setBagProduct(product.title, product.price, 1)}/>
                                 }
                                 available_quantity={product.available_quantity}
                                 key={product.catalog_id}
