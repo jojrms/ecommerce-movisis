@@ -103,22 +103,27 @@ const LandingPage = () => {
 
 
 
-    //---------------- FUNÇÃO PARA ENCHER O CARRINHO ---------------
-    const [product, setProduct] = useState([] as any)
+    //-------------------- FUNÇÃO PARA O CARRINHO ------------------------
+    const [productsBag, setProductsBag] = useState([] as any)
     const [bag, setBag] = useState({
         qtd: 0
     })
 
-    const setBagProduct = async(title: string, price: number, qtd: number) => {
+    const setBagProduct = (title: string, price: number, qtd: number) => {
 
-        const productS = [{title: title, price: price, qtd: qtd}]
+        const productSelected = [{
+            title: title, 
+            price: price, 
+            qtd: qtd
+        }]
 
-        productS.forEach( (product: any) => {
-            setProduct((currentList: any) => [...currentList, productS])
+        productSelected.forEach( (product: any) => {
+            setProductsBag((currentList: any) => [...currentList, product])
         })
 
         bag.qtd++
-        console.log(bag);
+
+        console.log(productsBag);
         
     }
 
@@ -133,7 +138,7 @@ const LandingPage = () => {
     return (
         <>
             <header>
-                <div>
+                <div className="divSearch">
                     <img onClick={searchProduct} src="https://img.icons8.com/ios-glyphs/480/000000/search--v1.png"/>
                     <input type={'search'} placeholder={'Search product'} 
                     onChange={(event) => setProductToSearch({...productToSearch, productName: event.target.value})}
@@ -149,16 +154,30 @@ const LandingPage = () => {
                     <img src="https://img.icons8.com/fluency-systems-regular/96/000000/shopping-cart.png"/>
                     <input id="pQtdProducts" value={bag.qtd}/>
                 </button>
-            </header>
-            <section className="sectionAbsolute" id="sectionAbsolute">
 
-                <aside className="asideBagExb" id="asideBagExb">
-                    <span className="spanBackground">
-                        <h3>Carrinho</h3>
-                        <div>   
-                        </div>
-                    </span>
-                </aside>
+            </header>
+
+            {/* EXIBIÇÃO DO CARRINHO */}
+            <div className='divExbBag'>
+                <span className="spanBackground">
+                    <h3>Carrinho</h3>
+                    <div>   
+                        {productsBag.map((product: any) => {
+                            return(
+                                <span>
+                                    <img src="https://img.icons8.com/external-anggara-basic-outline-anggara-putra/24/000000/external-delete-basic-user-interface-anggara-basic-outline-anggara-putra.png"/>
+                                    <h3>{product.title}</h3>
+                                    <p>R$ {product.price}</p>
+                                </span>
+                            )
+                        })}
+                    </div>
+                    <input type={'submit'} value='Próximo: Verificação'/>
+                </span>    
+            </div>
+            
+
+            <section className="sectionAbsolute" id="sectionAbsolute">
 
                 <aside className="asideFilters">
                     <h3>Filtros</h3>
